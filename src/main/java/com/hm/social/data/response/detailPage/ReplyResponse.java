@@ -1,4 +1,4 @@
-package com.hm.social.data.response.DetailPage;
+package com.hm.social.data.response.detailPage;
 
 
 import lombok.Data;
@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 public class ReplyResponse {
     private String replyContent;
     private Integer voteCount;
-    private UserResponse userResponse;
+    private String userCommentName;
+    private UserResponse userReplyResponse;
 
 }

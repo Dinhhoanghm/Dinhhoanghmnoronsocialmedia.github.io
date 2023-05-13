@@ -1,4 +1,4 @@
-package com.hm.social.data.request.DetailPage;
+package com.hm.social.data.request.detailPage;
 
 
 import lombok.Data;

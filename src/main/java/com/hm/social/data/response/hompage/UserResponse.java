@@ -1,7 +1,6 @@
 
-package com.hm.social.data.response.Hompage;
+package com.hm.social.data.response.hompage;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

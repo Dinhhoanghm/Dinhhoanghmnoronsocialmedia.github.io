@@ -1,12 +1,14 @@
 package com.hm.social.service;
 
-import com.hm.social.data.response.Hompage.CommentResponse;
-import com.hm.social.data.response.Hompage.PostResponse;
-import com.hm.social.data.response.Hompage.UserResponse;
+import com.hm.social.data.response.hompage.CommentResponse;
+import com.hm.social.data.response.hompage.PostResponse;
+import com.hm.social.data.response.hompage.UserResponse;
 import com.hm.social.repository.HomeRepository;
 import com.hm.social.tables.pojos.Comments;
 import com.hm.social.tables.pojos.Posts;
 import com.hm.social.tables.pojos.Users;
+import org.jooq.Null;
+import org.jooq.impl.QOM;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -45,10 +47,17 @@ public class HomeService {
 
       for(Posts post : posts){
           Comments comment = homeRepository.getcommonComment(post.getPostid());
+          if(comment == null){
+              continue;
+          };
+
           Users user = homeRepository.getUser(comment.getCommentuserid());
+          if(user == null){
+              continue;
+          }
           Integer replyCount = homeRepository.replyCount(comment.getCommentid());
-          CommentResponse commentResponse= new CommentResponse().setCommentDesc(comment.getCommentContent())
-                  .setCreatedAt(comment.getCreatedAt())
+          CommentResponse commentResponse= new CommentResponse().setCommentDesc(comment.getCommentcontent())
+                  .setCreatedAt(comment.getCreatedat())
                   .setVoteCount(comment.getVotecount())
                   .setReplyCount(replyCount);
           UserResponse userResponse = new UserResponse().setUserAvatar(user.getUseravatarurl())
@@ -75,10 +84,16 @@ public class HomeService {
 
         for(Posts post : posts){
             Comments comment = homeRepository.getcommonComment(post.getPostid());
+            if(comment == null){
+                continue;
+            };
             Users user = homeRepository.getUser(comment.getCommentuserid());
+            if(user==null){
+                continue;
+            }
             Integer replyCount = homeRepository.replyCount(comment.getCommentid());
-            CommentResponse commentResponse= new CommentResponse().setCommentDesc(comment.getCommentContent())
-                    .setCreatedAt(comment.getCreatedAt())
+            CommentResponse commentResponse= new CommentResponse().setCommentDesc(comment.getCommentcontent())
+                    .setCreatedAt(comment.getCreatedat())
                     .setVoteCount(comment.getVotecount())
                     .setReplyCount(replyCount);
             UserResponse userResponse = new UserResponse().setUserAvatar(user.getUseravatarurl())

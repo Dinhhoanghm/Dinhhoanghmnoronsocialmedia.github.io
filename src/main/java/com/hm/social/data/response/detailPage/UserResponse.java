@@ -1,4 +1,4 @@
-package com.hm.social.data.response.DetailPage;
+package com.hm.social.data.response.detailPage;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

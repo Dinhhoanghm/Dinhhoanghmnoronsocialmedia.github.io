@@ -1,4 +1,4 @@
-package com.hm.social.data.response.DetailPage;
+package com.hm.social.data.response.detailPage;
 
 
 
@@ -14,5 +14,6 @@ public class PostResponse {
     private UserResponse userResponse;
     private List<CommentResponse> commentResponses;
     private List<String> PostRecommend;
+    private Integer CommentCount;
     private String Topic;
 }

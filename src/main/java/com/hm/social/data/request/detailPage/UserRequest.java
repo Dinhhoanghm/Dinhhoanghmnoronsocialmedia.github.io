@@ -1,7 +1,5 @@
-package com.hm.social.data.request.DetailPage;
+package com.hm.social.data.request.detailPage;
 
-import lombok. AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

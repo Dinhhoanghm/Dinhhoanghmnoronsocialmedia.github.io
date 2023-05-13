@@ -28,7 +28,7 @@ public class HomeRepository {
 
     public List<Posts> getAllNewPost(){
         List<Posts> allPostSortedByDate = dslContext.selectFrom(posts)
-                .orderBy(posts.CREATEDAT)
+                .orderBy(posts.CREATEDAT.desc())
                 .fetchInto(Posts.class);
         return allPostSortedByDate;
     }
@@ -45,15 +45,15 @@ public class HomeRepository {
     public List<Comments> getAllComments(Integer id){
         List<Comments> allCommentSortedByDate = dslContext.select()
                 .from(comments)
-                .where(comments.POST_ID.eq(id))
-                .orderBy(comments.CREATED_AT)
+                .where(comments.POSTID.eq(id))
+                .orderBy(comments.CREATEDAT)
                 .fetchInto(Comments.class);
         return allCommentSortedByDate;
     }
    public Comments getcommonComment(Integer id) {
          Comments commonComment = dslContext.select()
                  .from(comments)
-                 .where(comments.POST_ID.eq(id))
+                 .where(comments.POSTID.eq(id))
                  .orderBy(comments.VOTECOUNT)
                  .limit(1)
                  .offset(0)
